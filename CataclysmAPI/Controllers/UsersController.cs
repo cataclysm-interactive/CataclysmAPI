@@ -77,10 +77,18 @@ namespace CataclysmAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
+            if(UserExists(user.Id))
+            {
+                return NoContent();
+            }
+            else
+            {
+                _context.Users.Add(user);
+                await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetUser", new { id = user.Id }, user);
+                return CreatedAtAction("GetUser", new { id = user.Id }, user);
+            }
+
         }
 
         // DELETE: api/Users/5
