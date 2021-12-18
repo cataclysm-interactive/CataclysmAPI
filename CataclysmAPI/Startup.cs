@@ -5,7 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.EntityFrameworkCore;
-//using CataclysmAPI.Models;
+using CataclysmAPI.Models;
 using System.Text;
 using System.Data.SqlClient;
 
@@ -24,8 +24,8 @@ namespace CataclysmAPI
         {
             services.AddSwaggerGen();
 
-            //services.AddDbContext<CoreDbContext>(opt =>
-            //                                   opt.UseSqlServer(Configuration.GetConnectionString("Database")));
+            services.AddDbContext<CoreDbContext>(opt =>
+                                               opt.UseSqlServer(Configuration.GetConnectionString("Database")));
             services.AddControllers();
         }
 
