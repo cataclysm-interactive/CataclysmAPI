@@ -11,7 +11,7 @@ namespace CataclysmAPI.Models
     public partial class User
     {
         [Key]
-        public int Id { get; set; }
+        public long Id { get; set; }
         [Column("token")]
         public int Token { get; set; }
     }
