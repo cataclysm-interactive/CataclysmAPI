@@ -77,7 +77,7 @@ namespace CataclysmAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-            if(UserExists(user.Id))
+            if (UserExists(user.Id))
             {
                 return NoContent();
             }
