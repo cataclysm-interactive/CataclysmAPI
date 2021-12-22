@@ -6,9 +6,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CataclysmAPI.Models
 {
+    [Keyless]
     public partial class User
     {
-        [Key]
         public long Id { get; set; }
         [Column("token")]
         public int Token { get; set; }

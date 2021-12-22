@@ -16,6 +16,7 @@ namespace CataclysmAPI.Models
         {
         }
 
+        public virtual DbSet<Store> Stores { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -29,6 +30,11 @@ namespace CataclysmAPI.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<Store>(entity =>
+            {
+                entity.Property(e => e.StoreName).IsFixedLength();
+            });
+
             OnModelCreatingPartial(modelBuilder);
         }
 
