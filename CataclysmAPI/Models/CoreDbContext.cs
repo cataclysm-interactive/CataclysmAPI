@@ -16,7 +16,7 @@ namespace CataclysmAPI.Models
         {
         }
 
-        public virtual DbSet<Store> Stores { get; set; }
+        public virtual DbSet<Faction> Factions { get; set; }
         public virtual DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -30,9 +30,13 @@ namespace CataclysmAPI.Models
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Store>(entity =>
+            modelBuilder.Entity<Faction>(entity =>
             {
-                entity.Property(e => e.StoreName).IsFixedLength();
+                entity.Property(e => e.FactionLandClaim).IsFixedLength();
+
+                entity.Property(e => e.FactionMembers).IsFixedLength();
+
+                entity.Property(e => e.FactionName).IsFixedLength();
             });
 
             OnModelCreatingPartial(modelBuilder);

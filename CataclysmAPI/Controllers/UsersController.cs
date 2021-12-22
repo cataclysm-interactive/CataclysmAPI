@@ -46,7 +46,7 @@ namespace CataclysmAPI.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutUser(long id, User user)
         {
-            if (id != user.Id)
+            if (id != user.id)
             {
                 return BadRequest();
             }
@@ -77,7 +77,7 @@ namespace CataclysmAPI.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> PostUser(User user)
         {
-            if (UserExists(user.Id))
+            if (UserExists(user.id))
             {
                 return NoContent();
             }
@@ -86,7 +86,7 @@ namespace CataclysmAPI.Controllers
                 _context.Users.Add(user);
                 await _context.SaveChangesAsync();
 
-                return CreatedAtAction("GetUser", new { id = user.Id }, user);
+                return CreatedAtAction("GetUser", new { id = user.id }, user);
             }
 
         }
@@ -109,7 +109,7 @@ namespace CataclysmAPI.Controllers
 
         private bool UserExists(long id)
         {
-            return _context.Users.Any(e => e.Id == id);
+            return _context.Users.Any(e => e.id == id);
         }
     }
 }

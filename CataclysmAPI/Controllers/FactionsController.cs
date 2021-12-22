@@ -11,47 +11,47 @@ namespace CataclysmAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class StoresController : ControllerBase
+    public class FactionsController : ControllerBase
     {
         private readonly CoreDbContext _context;
 
-        public StoresController(CoreDbContext context)
+        public FactionsController(CoreDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Stores
+        // GET: api/Factions
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Store>>> GetStores()
+        public async Task<ActionResult<IEnumerable<Faction>>> GetFactions()
         {
-            return await _context.Stores.ToListAsync();
+            return await _context.Factions.ToListAsync();
         }
 
-        // GET: api/Stores/5
+        // GET: api/Factions/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Store>> GetStore(long id)
+        public async Task<ActionResult<Faction>> GetFaction(long id)
         {
-            var store = await _context.Stores.FindAsync(id);
+            var faction = await _context.Factions.FindAsync(id);
 
-            if (store == null)
+            if (faction == null)
             {
                 return NotFound();
             }
 
-            return store;
+            return faction;
         }
 
-        // PUT: api/Stores/5
+        // PUT: api/Factions/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutStore(long id, Store store)
+        public async Task<IActionResult> PutFaction(long id, Faction faction)
         {
-            if (id != store.Id)
+            if (id != faction.id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(store).State = EntityState.Modified;
+            _context.Entry(faction).State = EntityState.Modified;
 
             try
             {
@@ -59,7 +59,7 @@ namespace CataclysmAPI.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!StoreExists(id))
+                if (!FactionExists(id))
                 {
                     return NotFound();
                 }
@@ -72,44 +72,44 @@ namespace CataclysmAPI.Controllers
             return NoContent();
         }
 
-        // POST: api/Stores
+        // POST: api/Factions
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(Store store)
+        public async Task<ActionResult<User>> PostFaction(Faction faction)
         {
-            if (StoreExists(store.Id))
+            if (FactionExists(faction.id))
             {
                 return NoContent();
             }
             else
             {
-                _context.Stores.Add(store);
+                _context.Factions.Add(faction);
                 await _context.SaveChangesAsync();
 
-                return CreatedAtAction("GetStore", new { id = store.Id }, store);
+                return CreatedAtAction("GetUser", new { id = faction.id }, faction);
             }
 
         }
 
-        // DELETE: api/Stores/5
+        // DELETE: api/Factions/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteStore(long id)
+        public async Task<IActionResult> DeleteFaction(long id)
         {
-            var store = await _context.Stores.FindAsync(id);
-            if (store == null)
+            var faction = await _context.Factions.FindAsync(id);
+            if (faction == null)
             {
                 return NotFound();
             }
 
-            _context.Stores.Remove(store);
+            _context.Factions.Remove(faction);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool StoreExists(long id)
+        private bool FactionExists(long id)
         {
-            return _context.Stores.Any(e => e.Id == id);
+            return _context.Factions.Any(e => e.id == id);
         }
     }
 }
