@@ -12,7 +12,7 @@ namespace CataclysmAPI.Models
         [Column("id")]
         public long Id { get; set; }
         [Column("storeName")]
-        [StringLength(20)]
+        [StringLength(50)]
         public string StoreName { get; set; }
         [Column("storeIncome")]
         public int? StoreIncome { get; set; }
