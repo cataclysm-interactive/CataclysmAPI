@@ -24,7 +24,15 @@ namespace CataclysmAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Faction>>> GetFactions()
         {
-            return await _context.Factions.ToListAsync();
+            List<Faction> factions = new List<Faction>();
+            foreach (Faction faction in _context.Factions)
+            {
+                faction.FactionMembers = faction.FactionMembers.Trim();
+                faction.FactionLandClaim = faction.FactionLandClaim.Trim();
+                faction.FactionName = faction.FactionName.Trim();
+                factions.Add(faction);
+            }
+            return factions;
         }
 
         // GET: api/Factions/5
@@ -37,6 +45,10 @@ namespace CataclysmAPI.Controllers
             {
                 return NotFound();
             }
+
+            faction.FactionMembers = faction.FactionMembers.Trim();
+            faction.FactionLandClaim = faction.FactionLandClaim.Trim();
+            faction.FactionName = faction.FactionName.Trim();
 
             return faction;
         }
@@ -86,7 +98,7 @@ namespace CataclysmAPI.Controllers
                 _context.Factions.Add(faction);
                 await _context.SaveChangesAsync();
 
-                return CreatedAtAction("GetUser", new { id = faction.id }, faction);
+                return CreatedAtAction("GetFaction", new { id = faction.id }, faction);
             }
 
         }

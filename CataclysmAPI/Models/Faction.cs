@@ -10,19 +10,19 @@ namespace CataclysmAPI.Models
     {
         [Key]
         [Column("id")]
+        [Required]
         public long id { get; set; }
+        [Required]
         [Column("factionName")]
-        [StringLength(50)]
         public string FactionName { get; set; }
+        [Required]
         [Column("factionIncome")]
         public int? FactionIncome { get; set; }
         [Required]
         [Column("factionMembers")]
-        [StringLength(1000)]
         public string FactionMembers { get; set; }
         [Required]
         [Column("factionLandClaim")]
-        [StringLength(1000)]
         public string FactionLandClaim { get; set; }
     }
 }

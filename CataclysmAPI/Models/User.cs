@@ -9,8 +9,10 @@ namespace CataclysmAPI.Models
     public partial class User
     {
         [Key]
+        [Required]
         public long id { get; set; }
         [Column("token")]
+        [Required]
         public int Token { get; set; }
         [Column("date", TypeName = "date")]
         public DateTime Date { get; set; }
