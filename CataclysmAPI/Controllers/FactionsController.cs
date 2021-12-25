@@ -30,6 +30,7 @@ namespace CataclysmAPI.Controllers
                 faction.FactionMembers = faction.FactionMembers.Trim();
                 faction.FactionLandClaim = faction.FactionLandClaim.Trim();
                 faction.FactionName = faction.FactionName.Trim();
+                faction.FactionLogo = faction.FactionLogo.Trim();
                 factions.Add(faction);
             }
             return factions;
