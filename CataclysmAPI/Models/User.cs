@@ -14,7 +14,7 @@ namespace CataclysmAPI.Models
         [Column("token")]
         [Required]
         public int Token { get; set; }
-        [Column("date", TypeName = "date")]
+        [Column("date", TypeName = "datetime")]
         public DateTime Date { get; set; }
         [Column("customRole")]
         public byte CustomRole { get; set; }
