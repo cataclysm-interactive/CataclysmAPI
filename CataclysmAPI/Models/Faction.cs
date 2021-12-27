@@ -22,5 +22,9 @@ namespace CataclysmAPI.Models
         public string FactionLandClaim { get; set; }
         [Column("factionLogo")]
         public string FactionLogo { get; set; }
+
+        public int attack { get; set; }
+        public int defense { get; set; }
+        public int utility { get; set; }
     }
 }
