@@ -26,5 +26,6 @@ namespace CataclysmAPI.Models
         public int attack { get; set; }
         public int defense { get; set; }
         public int utility { get; set; }
+        public int balance { get; set; }
     }
 }
