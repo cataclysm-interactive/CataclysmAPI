@@ -63,11 +63,8 @@ namespace CataclysmAPI.Controllers
             {
                 return BadRequest();
             }
-            var oldFaction = await _context.Factions.FindAsync(id);
-            if (oldFaction.FactionMembers != faction.FactionMembers && faction.FactionMembers != null)
-                oldFaction.FactionMembers = faction.FactionMembers;
 
-            _context.Entry(oldFaction).State = EntityState.Modified;
+            _context.Entry(faction).State = EntityState.Modified;
 
             try
             {
