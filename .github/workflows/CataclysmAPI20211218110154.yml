@@ -1,4 +1,4 @@
-name: Build and deploy .NET Core application to windows webapp CataclysmAPI20211218110154 with API Management Service CataclysmAPIapi
+name: Build and deploy
 on:
   push:
     branches:
