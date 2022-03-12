@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using CataclysmAPI.Models;
 
 namespace CataclysmAPI.Models
 {
@@ -18,6 +19,8 @@ namespace CataclysmAPI.Models
 
         public virtual DbSet<Faction> Factions { get; set; }
         public virtual DbSet<User> Users { get; set; }
+
+        public virtual DbSet<Map> Map { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -43,5 +46,7 @@ namespace CataclysmAPI.Models
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+
+        
     }
 }
