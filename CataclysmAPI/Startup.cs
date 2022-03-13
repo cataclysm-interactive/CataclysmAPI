@@ -45,7 +45,7 @@ namespace CataclysmAPI
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseSwagger();
-
+            
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
