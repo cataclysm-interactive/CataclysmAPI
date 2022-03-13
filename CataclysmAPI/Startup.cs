@@ -13,6 +13,7 @@ namespace CataclysmAPI
 {
     public class Startup
     {
+        readonly string MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -25,7 +26,19 @@ namespace CataclysmAPI
             services.AddSwaggerGen();
 
             services.AddDbContext<CoreDbContext>(opt =>
-                                               opt.UseSqlServer(Configuration.GetConnectionString("Database")));
+                                               opt.UseSqlServer(Configuration.GetConnectionString("Database")));   
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy(name: MyAllowSpecificOrigins,
+                                  builder =>
+                                  {
+                                      builder.WithOrigins("https://localhost:44333/",
+                                                          "https://cataclysmapi20211218110154.azurewebsites.net/");
+                                  });
+            });
+
+            // services.AddResponseCaching();
             services.AddControllers();
         }
 
@@ -40,6 +53,8 @@ namespace CataclysmAPI
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseCors(MyAllowSpecificOrigins);
 
             app.UseHttpsRedirection();
             app.UseRouting();
