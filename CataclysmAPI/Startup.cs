@@ -33,8 +33,9 @@ namespace CataclysmAPI
                 options.AddPolicy(name: MyAllowSpecificOrigins,
                                   builder =>
                                   {
-                                      builder.WithOrigins("https://localhost:44333/",
-                                                          "https://cataclysmapi20211218110154.azurewebsites.net/");
+                                      builder.AllowAnyOrigin();
+                                      builder.AllowAnyMethod();
+                                      builder.AllowAnyHeader();
                                   });
             });
 
