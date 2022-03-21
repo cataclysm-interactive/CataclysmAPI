@@ -25,7 +25,7 @@ namespace CataclysmAPI.Controllers
         public async Task<ActionResult<IEnumerable<Map>>> GetMap()
         {
             List<Map> maps = new List<Map>();
-            foreach (Map map in _context.Maps)
+            foreach (Map map in _context.Map)
             {
                 map.plotOwner = map.plotOwner.Trim();
                 maps.Add(map);
