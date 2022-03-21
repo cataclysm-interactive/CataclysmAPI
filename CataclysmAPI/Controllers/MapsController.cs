@@ -24,7 +24,13 @@ namespace CataclysmAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Map>>> GetMap()
         {
-            return await _context.Map.ToListAsync();
+            List<Map> maps = new List<Map>();
+            foreach (Map map in _context.Maps)
+            {
+                map.plotOwner = map.plotOwner.Trim();
+                maps.Add(map);
+            }
+            return maps;
         }
 
         // GET: api/Maps/5
@@ -37,6 +43,8 @@ namespace CataclysmAPI.Controllers
             {
                 return NotFound();
             }
+            
+            map.plotOwner = map.plotOwner.Trim();
 
             return map;
         }
