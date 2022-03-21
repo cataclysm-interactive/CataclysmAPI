@@ -16,7 +16,7 @@ namespace CataclysmAPI.Models
         public int plotNum { get; set; }
 
         [Column("plotOwner")]
-        public long plotOwner { get; set; }
+        public string plotOwner { get; set; }
         [Column("plotType")]
         [Required]
         public byte plotType { get; set; }
