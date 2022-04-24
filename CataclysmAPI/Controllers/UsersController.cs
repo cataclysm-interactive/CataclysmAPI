@@ -24,7 +24,16 @@ namespace CataclysmAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<User>>> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            List<User> users = new List<User>();
+            foreach(User user in _context.Users)
+            {
+                if(user.mtgStats != null)
+                {
+                    user.mtgStats = user.mtgStats.Trim();
+                }
+                users.Add(user);
+            }
+            return users;
         }
 
         // GET: api/Users/5
@@ -32,12 +41,12 @@ namespace CataclysmAPI.Controllers
         public async Task<ActionResult<User>> GetUser(long id)
         {
             var user = await _context.Users.FindAsync(id);
-
+            
             if (user == null)
             {
                 return NotFound();
             }
-
+            user.mtgStats = user.mtgStats.Trim();
             return user;
         }
 
