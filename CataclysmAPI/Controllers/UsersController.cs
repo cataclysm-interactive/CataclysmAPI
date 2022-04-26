@@ -33,6 +33,12 @@ namespace CataclysmAPI.Controllers
                     user.wins = user.wins.Trim();
                     user.losses = user.losses.Trim();
                 }
+                else
+                {
+                    user.playedVS = ""; ;
+                    user.wins = "";
+                    user.losses = "";
+                }
                 users.Add(user);
             }
             return users;
@@ -53,6 +59,12 @@ namespace CataclysmAPI.Controllers
                 user.playedVS = user.playedVS.Trim();
                 user.wins = user.wins.Trim();
                 user.losses = user.losses.Trim();
+            }
+            else
+            {
+                user.playedVS = ""; ;
+                user.wins = "";
+                user.losses = "";
             }
             return user;
         }
