@@ -46,7 +46,10 @@ namespace CataclysmAPI.Controllers
             {
                 return NotFound();
             }
-            user.mtgStats = user.mtgStats.Trim();
+            if(user.mtgStats != null)
+            {
+                user.mtgStats = user.mtgStats.Trim();
+            }
             return user;
         }
 
