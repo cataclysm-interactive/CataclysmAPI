@@ -27,9 +27,11 @@ namespace CataclysmAPI.Controllers
             List<User> users = new List<User>();
             foreach(User user in _context.Users)
             {
-                if(user.mtgStats != null)
+                if(user.playedVS != null)
                 {
-                    user.mtgStats = user.mtgStats.Trim();
+                    user.playedVS = user.playedVS.Trim();
+                    user.wins = user.wins.Trim();
+                    user.losses = user.losses.Trim();
                 }
                 users.Add(user);
             }
@@ -46,9 +48,11 @@ namespace CataclysmAPI.Controllers
             {
                 return NotFound();
             }
-            if(user.mtgStats != null)
+            if (user.playedVS != null)
             {
-                user.mtgStats = user.mtgStats.Trim();
+                user.playedVS = user.playedVS.Trim();
+                user.wins = user.wins.Trim();
+                user.losses = user.losses.Trim();
             }
             return user;
         }

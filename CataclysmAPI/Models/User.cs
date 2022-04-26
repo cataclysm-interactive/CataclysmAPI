@@ -18,7 +18,11 @@ namespace CataclysmAPI.Models
         public DateTime Date { get; set; }
         [Column("customRole")]
         public byte CustomRole { get; set; }
-        [Column("MTGstats")]
-        public string mtgStats { get; set; }
+        [Column("playedVs")]
+        public string playedVS { get; set; }
+        [Column("wins")]
+        public string wins { get; set; }
+        [Column("losses")]
+        public string losses { get; set; }
     }
 }
